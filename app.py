@@ -1,6 +1,10 @@
 import streamlit as st
 
-st.set_page_config(page_title="Espen Andresen Portfolio", layout="wide")
+with open("styles.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+st.set_page_config(page_title="Programming and Data Science Portfolio", layout="wide")
 
 # Hero Section
 st.markdown("""
