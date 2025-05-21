@@ -1,18 +1,18 @@
 import streamlit as st
-#import streamlit_extras as st_e
 
 st.set_page_config(page_title="Data Science Portfolio", layout="wide")
 
 # Apply global style
 with open("styles.css") as f:
-    st.html(f"<style>{f.read()}</style>")
+    css = f.read()
 
 # Hero/Intro
-st.markdown("""
+html = """
     <h1 style='font-size:2.4rem; margin-bottom:0.6rem; font-family: var(--font-main);'>Espen Andresen</h1>
     <div style='font-size:1.15rem; font-family: var(--font-main);'>Data Science & Programming Portfolio</div>
-    <div style='font-size:1rem; margin-top:0.7rem;'>Analytics · Machine Learning · Python · Visualization</div>""",
-    unsafe_allow_html=True)
+    <div style='font-size:1rem; margin-top:0.7rem;'>Analytics · Machine Learning · Python · Visualization</div>"""
+
+st.markdown(css + html, unsafe_allow_html=True)
 
 # About section
 st.markdown("### About Me")
