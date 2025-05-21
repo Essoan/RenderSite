@@ -3,14 +3,14 @@
 
 /* Light Theme */
 :root {
-  --bg: #EAFDE6;
-  --primary: #319795;
+  --bg: #E8F3F8;
+  --primary: #FFFFFF;
   --accent: #2274A5;
   --text: #1B676B;
-  --box: #FFFFFF;
-  --button-bg: #73626E;
-  --button-hover: #413E4A;
-  --button-text: #37505C;
+  --box: #DBE6EC;
+  --button-bg: #81A8B8;
+  --button-hover: #A4BCC2;
+  --button-text: #1B676BC;
   --link: #2274A5;
   --border: #E2E8F0;
   --font-main: 'Ubuntu', 'Droid Sans', sans-serif;
