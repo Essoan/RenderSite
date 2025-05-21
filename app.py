@@ -5,7 +5,7 @@ st.set_page_config(page_title="Data Science Portfolio", layout="wide")
 # Apply global style
 with open("styles.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-st.write("")
+    st.write("")
 
 # Hero/Intro
 st.markdown("""<h1 style='font-size:2.4rem; margin-bottom:0.6rem; font-family: var(--font-main);'>Espen Andresen</h1>
