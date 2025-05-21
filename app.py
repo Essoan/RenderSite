@@ -6,8 +6,6 @@ st.set_page_config(page_title="Data Science Portfolio", layout="wide")
 with open("styles.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-st.set_page_config(page_title="Espen Andresen – Data Science Portfolio", layout="wide")
-
 # Hero/Intro
 st.markdown("""
 <div style='background: var(--primary); border-radius:18px; padding:2.5rem 2rem 2rem 2rem; margin-bottom:2rem; 
