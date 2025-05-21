@@ -12,7 +12,7 @@ html = """
     <div style='font-size:1.15rem; font-family: var(--font-main);'>Data Science & Programming Portfolio</div>
     <div style='font-size:1rem; margin-top:0.7rem;'>Analytics · Machine Learning · Python · Visualization</div>"""
 
-st.markdown(css + html, unsafe_allow_html=True)
+st.markdown(f"<style>{css}</style>{html}", unsafe_allow_html=True)
 
 # About section
 st.markdown("### About Me")
