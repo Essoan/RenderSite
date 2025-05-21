@@ -31,20 +31,17 @@
   --font-main: 'Ubuntu', 'Droid Sans', sans-serif;
 }
 
-/* Apply background and font globally */
 body, .stApp {
   background-color: var(--bg) !important;
   color: var(--text) !important;
   font-family: var(--font-main);
 }
 
-/* Headings */
 h1, h2, h3, h4, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
   color: var(--primary) !important;
   font-family: var(--font-main);
 }
 
-/* Cards, DataFrames, and main boxes */
 .stBox, .stDataFrame, .stMarkdown, .stAlert, .st-cd, .st-af {
   background-color: var(--box) !important;
   border-radius: 14px;
@@ -53,7 +50,6 @@ h1, h2, h3, h4, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
   box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
 }
 
-/* Buttons */
 .stButton > button {
   background-color: var(--button-bg) !important;
   color: var(--button-text) !important;
@@ -68,7 +64,6 @@ h1, h2, h3, h4, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
   background-color: var(--button-hover) !important;
 }
 
-/* Links */
 a {
   color: var(--link);
   text-decoration: none;
@@ -79,7 +74,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Sidebar */
 .stSidebar {
   background-color: var(--box) !important;
   border-right: 1.5px solid var(--border);
