@@ -8,8 +8,8 @@ with open("styles.css") as f:
 
 # Hero/Intro
 st.markdown("""
-<div style='background: var(--primary); border-radius:18px; padding:2.5rem 2rem 2rem 2rem; margin-bottom:2rem; 
-color:var(--box); box-shadow:0 4px 20px rgba(49,151,149,0.08);'>
+<div style='background: var(--accent); border-radius:18px; padding:2.5rem 2rem 2rem 2rem; margin-bottom:2rem; 
+color:var(--button-text); box-shadow:0 4px 20px rgba(49,151,149,0.08);'>
     <h1 style='font-size:2.4rem; margin-bottom:0.6rem; font-family: var(--font-main);'>Espen Andresen</h1>
     <div style='font-size:1.15rem; font-family: var(--font-main);'>Data Science & Programming Portfolio</div>
     <div style='font-size:1rem; margin-top:0.7rem;'>Analytics · Machine Learning · Python · Visualization</div>
