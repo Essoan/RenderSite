@@ -49,6 +49,6 @@ with col4:
 
 st.markdown("""
 <div style='text-align:center; color:var(--primary); font-size:1rem; margin-top:1.6rem;'>
-    &copy; 2024 Espen Andresen — Built with Streamlit
+    &copy; 2025 Espen Andresen — Built with Streamlit
 </div>
 """, unsafe_allow_html=True)
