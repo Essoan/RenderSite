@@ -3,13 +3,13 @@
 
 /* Light Theme */
 :root {
-  --bg: #F7FAFA;
+  --bg: #EAFDE6;
   --primary: #319795;
   --accent: #2274A5;
-  --text: #1A232B;
+  --text: #1B676B;
   --box: #FFFFFF;
-  --button-bg: #319795;
-  --button-hover: #2274A5;
+  --button-bg: #73626E;
+  --button-hover: #413E4A;
   --button-text: #37505C;
   --link: #2274A5;
   --border: #E2E8F0;
@@ -18,13 +18,13 @@
 
 /* Dark Theme */
 [data-theme="dark"] {
-  --bg: #182227;
+  --bg: #1B676B;
   --primary: #285E61;
   --accent: #38B2AC;
-  --text: #F4F8FB;
+  --text: #EAFDE6;
   --box: #24313C;
-  --button-bg: #38B2AC;
-  --button-hover: #285E61;
+  --button-bg: #413E4A;
+  --button-hover: #73626E;
   --button-text: ##B6E3F6;
   --link: #38B2AC;
   --border: #31404B;
