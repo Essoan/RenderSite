@@ -1,11 +1,11 @@
 import streamlit as st
+#import streamlit_extras as st_e
 
 st.set_page_config(page_title="Data Science Portfolio", layout="wide")
 
 # Apply global style
-with st.sidebar:
-    with open("styles.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+with open("styles.css") as f:
+    st.html(f"<style>{f.read()}</style>")
 
 # Hero/Intro
 st.markdown("""
