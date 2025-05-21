@@ -7,12 +7,9 @@ with open("styles.css") as f:
     css = f.read()
 
 # Hero/Intro
-html = """
-    <h1 style='font-size:2.4rem; margin-bottom:0.6rem; font-family: var(--font-main);'>Espen Andresen</h1>
-    <div style='font-size:1.15rem; font-family: var(--font-main);'>Data Science & Programming Portfolio</div>
-    <div style='font-size:1rem; margin-top:0.7rem;'>Analytics · Machine Learning · Python · Visualization</div>"""
+html = "### Espen Andresen \n test test test"
 
-st.markdown(f"<style>{css}</style>{"### About me"}", unsafe_allow_html=True)
+st.markdown(f"<style>{css}</style>{html}", unsafe_allow_html=True)
 
 # About section
 st.markdown("### About Me")
