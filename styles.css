@@ -4,17 +4,17 @@
 /* Light Theme */
 :root {
   --bg: #E8F3F8;
-  --primary: #C2CBCE;
+  --primary: #1B676B;
   --accent: #2274A5;
   --text: #1B676B;
   --box: #DBE6EC;
-  --button-bg: #81A8B8;
+  --button-bg: #A4BCC2;
   --button-hover: #A4BCC2;
-  --button-text: #1B676BC;
+  --button-text: #1B676B;
   --link: #2274A5;
   --border: #E2E8F0;
   --font-main: 'Ubuntu', 'Droid Sans', sans-serif;
-  --font-headings: #1B676BC;
+  --font-headings: #1B676B;
 }
 
 /* Dark Theme */
