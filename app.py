@@ -7,9 +7,8 @@ with open("styles.css") as f:
     css = f.read()
 
 # Hero/Intro
-html = "### Espen Andresen \n test test test"
 
-st.markdown(f"<style>{css}</style>{html}", unsafe_allow_html=True)
+st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
 # About section
 st.markdown("### About Me")
