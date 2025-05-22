@@ -61,6 +61,6 @@ st.pydeck_chart(
         tooltip={"text": "{fylkesnavn}"}
 
     ),
-    width=900,
-    height=900
+    width=750,
+    height=750
 )
