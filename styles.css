@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700|Droid+Sans:400,700&display=swap');
 
 /* Light Theme */
-:root {
+[data-theme="light"] {
   --bg: #E8F3F8;
   --primary: #1B676B;
   --accent: #81A8B8;
@@ -34,7 +34,7 @@
 }
 
 /* ---- Streamlit top menu bar (header) color ---- */
-[data-testid="stHeader"] {
+[data-theme="light"] [data-testid = "stHeader"] {
     background-color: #E8F3F8 !important;   /* Light theme color */
 }
 
@@ -42,6 +42,7 @@
 [data-testid="stHeader"] > div {
     background: none !important;
 }
+
 [data-testid="stHeader"] svg {
     display: none !important;
 }
