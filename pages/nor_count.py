@@ -15,10 +15,10 @@ def load_and_prepare_gdf(path):
         gdf = gdf.to_crs(epsg=4326)
     # Assign a unique color to each county (fylkesnavn)
     county_names = gdf["fylkesnavn"].unique()
-    n_colors = len(county_names + 5)
+    n_colors = len(county_names)
     cmap = cm.get_cmap("tab20", n_colors)
     color_dict = {name: [int(255*r), int(255*g), int(255*b), 120]
-                  for name, (r, g, b, _) in zip(county_names, cmap(np.linspace(0, 1, n_colors)))}
+    for name, (r, g, b, _) in zip(county_names, cmap(np.linspace(0, 1, n_colors)))}
     gdf["fill_color"] = gdf["fylkesnavn"].map(color_dict)
 
     # Extract coordinates for pydeck
