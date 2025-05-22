@@ -6,13 +6,14 @@ import pandas as pd
 st.set_page_config(page_title="Norway Counties Map (Pydeck)", page_icon="🗺️", layout="wide")
 
 # --- Load your GeoJSON file ---
-gdf = gpd.read_file("../data/fylker.geojson")
+gdf = gpd.read_file("data/fylker.geojson")
 
 # Ensure CRS is WGS84 (lat/lon)
 if gdf.crs and gdf.crs.to_string() != "EPSG:4326":
     gdf = gdf.to_crs(epsg=4326)
 
 # --- Convert the GeoDataFrame into a pydeck-friendly dataframe ---
+
 def extract_coordinates(geometry):
     # Handles both Polygon and MultiPolygon
     if geometry.geom_type == "Polygon":
