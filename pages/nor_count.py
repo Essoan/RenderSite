@@ -1,66 +1,72 @@
 import streamlit as st
 import geopandas as gpd
 import pydeck as pdk
-import pandas as pd
+from matplotlib import cm
+import numpy as np
 
 st.set_page_config(page_title="Norway Counties Map (Pydeck)", page_icon="🗺️", layout="wide")
 
-# --- Load your GeoJSON file ---
-gdf = gpd.read_file("data/fylker.geojson")
+# --- Cache loading and prepping GeoJSON with dynamic colors ---
+@st.cache_data
+def load_and_prepare_gdf(path):
+    gdf = gpd.read_file(path)
+    # Ensure CRS is WGS84 (lat/lon)
+    if gdf.crs and gdf.crs.to_string() != "EPSG:4326":
+        gdf = gdf.to_crs(epsg=4326)
+    # Assign a unique color to each county (fylkesnavn)
+    county_names = gdf["fylkesnavn"].unique()
+    n_colors = len(county_names)
+    cmap = cm.get_cmap("tab20", n_colors)
+    color_dict = {name: [int(255*r), int(255*g), int(255*b), 120]
+                  for name, (r, g, b, _) in zip(county_names, cmap(np.linspace(0, 1, n_colors)))}
+    gdf["fill_color"] = gdf["fylkesnavn"].map(color_dict)
 
-# Ensure CRS is WGS84 (lat/lon)
-if gdf.crs and gdf.crs.to_string() != "EPSG:4326":
-    gdf = gdf.to_crs(epsg=4326)
+    # Extract coordinates for pydeck
+    def extract_coordinates(geometry):
+        if geometry.geom_type == "Polygon":
+            return [list(geometry.exterior.coords)]
+        elif geometry.geom_type == "MultiPolygon":
+            return [list(poly.exterior.coords) for poly in geometry.geoms]
+        else:
+            return []
+    gdf["coordinates"] = gdf.geometry.apply(extract_coordinates)
+    return gdf
 
-# --- Convert the GeoDataFrame into a pydeck-friendly dataframe ---
+gdf = load_and_prepare_gdf("data/fylker.geojson")
 
-def extract_coordinates(geometry):
-    # Handles both Polygon and MultiPolygon
-    if geometry.geom_type == "Polygon":
-        return [list(geometry.exterior.coords)]
-    elif geometry.geom_type == "MultiPolygon":
-        return [list(poly.exterior.coords) for poly in geometry.geoms]
-    else:
-        return []
-
-gdf["coordinates"] = gdf.geometry.apply(extract_coordinates)
-
-# --- Build the Pydeck Layer ---
-polygon_layer = pdk.Layer(
-    "PolygonLayer",
-    data=gdf,
-    get_polygon="coordinates",
-    get_fill_color="[34, 116, 165, 100]",  # blue with alpha
-    get_line_color="[20, 74, 85, 255]",    # dark teal outline
-    pickable=True,
-    stroked=True,
-    filled=True,
-    extruded=False,
-    wireframe=True,
-    auto_highlight=True,
-)
-
-# --- Set the initial view state to center on Norway ---
-# ... after loading gdf ...
-centroids = gdf.geometry.centroid
-latitude = centroids.y.mean()
-longitude = centroids.x.mean()
-
-view_state = pdk.ViewState(
-    latitude=latitude, longitude=longitude,
-    zoom=4.5, pitch=0
-)
-
-# --- Show in Streamlit ---
-st.title("Norwegian Counties Map - Map from Pydeck")
-st.pydeck_chart(
-    pdk.Deck(
+# --- Cache the entire pydeck map object (for speed!) ---
+@st.cache_data
+def build_deck(gdf):
+    polygon_layer = pdk.Layer(
+        "PolygonLayer",
+        data=gdf,
+        get_polygon="coordinates",
+        get_fill_color="fill_color",
+        get_line_color="[40,40,40,200]",
+        pickable=True,
+        stroked=True,
+        filled=True,
+        extruded=False,
+        wireframe=True,
+        auto_highlight=True,
+    )
+    # Center on Norway
+    centroids = gdf.geometry.centroid
+    latitude = centroids.y.mean()
+    longitude = centroids.x.mean()
+    view_state = pdk.ViewState(
+        latitude=latitude, longitude=longitude,
+        zoom=4.5, pitch=0
+    )
+    deck = pdk.Deck(
         layers=[polygon_layer],
         map_style="mapbox://styles/mapbox/outdoors-v12",
         initial_view_state=view_state,
-        tooltip={"text": "{fylkesnavn}"}
+        tooltip={"html": "<b>Fylke:</b> {fylkesnavn}", "style": {"backgroundColor": "steelblue", "color": "white"}}
+    )
+    return deck
 
-    ),
-    width=750,
-    height=750
-)
+deck = build_deck(gdf)
+
+st.title("Norwegian Counties Map - Dynamic Colors (Pydeck)")
+st.pydeck_chart(deck, width=750, height=750)
