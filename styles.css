@@ -19,7 +19,7 @@
 
 /* Dark Theme */
 [data-theme="dark"] {
-  --bg: #1B676B;
+  --bg: #2D2D29;
   --primary: #285E61;
   --accent: #38B2AC;
   --text: #EAFDE6;
@@ -31,6 +31,25 @@
   --border: #31404B;
   --font-main: 'Ubuntu', 'Droid Sans', sans-serif;
 }
+
+/* ---- Streamlit top menu bar (header) color ---- */
+[data-testid="stHeader"] {
+    background-color: #E8F3F8 !important;   /* Light theme color */
+}
+
+/* Remove default Streamlit gradient overlay in header */
+[data-testid="stHeader"] > div {
+    background: none !important;
+}
+[data-testid="stHeader"] svg {
+    display: none !important;
+}
+
+/* ---- Top menu bar for dark theme ---- */
+[data-theme="dark"] [data-testid="stHeader"] {
+    background-color: #2D2D29 !important;   /* Dark theme color */
+}
+
 
 body, .stApp {
   background-color: var(--bg) !important;
