@@ -3,8 +3,7 @@ import geopandas as gpd
 import pydeck as pdk
 import pandas as pd
 
-st.set_page_config(page_title="Norway Counties Map (Pydeck)", page_icon="🗺️")
-st.set_page_config(page_title="Data Science Portfolio", layout="wide")
+st.set_page_config(page_title="Norway Counties Map (Pydeck)", page_icon="🗺️", layout="wide")
 
 # --- Load your GeoJSON file ---
 gdf = gpd.read_file("data/fylker.geojson")
@@ -41,9 +40,13 @@ polygon_layer = pdk.Layer(
 )
 
 # --- Set the initial view state to center on Norway ---
-center = gdf.geometry.centroid.unary_union
+# ... after loading gdf ...
+centroids = gdf.geometry.centroid
+latitude = centroids.y.mean()
+longitude = centroids.x.mean()
+
 view_state = pdk.ViewState(
-    latitude=center.y, longitude=center.x,
+    latitude=latitude, longitude=longitude,
     zoom=4.5, pitch=0
 )
 
