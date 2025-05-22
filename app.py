@@ -27,8 +27,8 @@ st.markdown("---")
 st.markdown("### Featured Projects")
 col1, col2 = st.columns(2)
 with col1:
-    st.markdown("**Project 1:** Exploratory Data Analysis App *(Coming Soon)*")
-    st.markdown("Interactive dashboard for rapid EDA on CSV datasets.")
+    st.html("**Project 1:** Exploratory Data Analysis App *(Coming Soon)*")
+    st.html("Interactive dashboard for rapid EDA on CSV datasets.")
 with col2:
     st.markdown("**Project 2:** ML Model Playground *(Coming Soon)*")
     st.markdown("Play with machine learning models on your data.")

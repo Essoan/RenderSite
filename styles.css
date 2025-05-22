@@ -20,16 +20,17 @@
 /* Dark Theme */
 [data-theme="dark"] {
   --bg: #2D2D29;
-  --primary: #285E61;
+  --primary: #DFECE6;
   --accent: #38B2AC;
-  --text: #EAFDE6;
-  --box: #24313C;
-  --button-bg: #413E4A;
-  --button-hover: #73626E;
-  --button-text: ##B6E3F6;
+  --text: #DFECE6;
+  --box: #215A6D;
+  --button-bg: #3CA2A2;
+  --button-hover: #215A6D;
+  --button-text: #DFECE6;
   --link: #38B2AC;
   --border: #31404B;
   --font-main: 'Ubuntu', 'Droid Sans', sans-serif;
+  --font-headings: #DFECE6;
 }
 
 /* ---- Streamlit top menu bar (header) color ---- */
