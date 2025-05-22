@@ -5,11 +5,14 @@
 :root {
   --bg: #E8F3F8;
   --primary: #1B676B;
+  --accent: #81A8B8;
   --text: #1B676B;
+  --box: #DBE6EC;
   --button-bg: #A4BCC2;
   --button-hover: #C2CBCE;
   --button-text: #1B676B;
   --link: #2274A5;
+  --border: #E2E8F0;
   --font-main: 'Ubuntu', 'Droid Sans', sans-serif;
   --font-headings: #1B676B;
 }
@@ -40,7 +43,7 @@ h1, h2, h3, h4, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
   font-family: var(--font-main);
 }
 
-.stBox, .stDataFrame, .stMarkdown, .stAlert, .st-cd, .st-af {
+.stBox, .stDataFrame, .stAlert, .st-cd, .st-af {
   background-color: var(--box) !important;
   border-radius: 14px;
   border: 1.5px solid var(--border);
