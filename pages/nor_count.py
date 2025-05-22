@@ -36,7 +36,7 @@ gdf = load_and_prepare_gdf("data/fylker.geojson")
 
 # --- Cache the entire pydeck map object (for speed!) ---
 @st.cache_data
-def build_deck(gdf):
+def build_deck(_gdf):
     polygon_layer = pdk.Layer(
         "PolygonLayer",
         data=gdf,
@@ -54,10 +54,19 @@ def build_deck(gdf):
     centroids = gdf.geometry.centroid
     latitude = centroids.y.mean()
     longitude = centroids.x.mean()
+    # --- Center and fit tightly to Norway ---
+    bounds = gdf.total_bounds  # [minx, miny, maxx, maxy]
+    center_lat = (bounds[1] + bounds[3]) / 2
+    center_lon = (bounds[0] + bounds[2]) / 2
+
     view_state = pdk.ViewState(
-        latitude=latitude, longitude=longitude,
-        zoom=4.5, pitch=0
+        latitude=center_lat,
+        longitude=center_lon,
+        zoom=5.2,  # Try 5.5, 5.7, etc for tighter view
+        pitch=0,
+        bearing=0
     )
+
     deck = pdk.Deck(
         layers=[polygon_layer],
         map_style="mapbox://styles/mapbox/outdoors-v12",
