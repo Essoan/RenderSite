@@ -8,7 +8,7 @@ with open("styles.css") as f:
 
 # Hero/Intro
 
-#st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
 # About section
 st.markdown("### About Me")
