@@ -28,8 +28,13 @@ with col1:
     st.html("<b>Project 1:</b> Exploratory Data Analysis App <i>(Coming Soon)</i>")
     st.html("Interactive dashboard for rapid EDA on CSV datasets.")
 with col2:
-    st.markdown("**Project 2:** ML Model Playground *(Coming Soon)*")
-    st.markdown("Play with machine learning models on your data.")
+    st.markdown("""
+    Explore data science projects, dashboards, and maps.
+
+    ➡️ Select **"Nor_count"** from the sidebar to see the Norway counties map.
+
+    [Or click here to open the map page.](./nor_count)
+    """)
 
 # Navigation buttons (add pages as you build)
 st.markdown("---")
