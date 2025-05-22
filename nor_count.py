@@ -1,35 +1,58 @@
 import streamlit as st
-import folium
-from streamlit_folium import st_folium
 import geopandas as gpd
+import pydeck as pdk
+import pandas as pd
 
-# 1. Load your MultiPolygon GeoJSON
-norway_gdf = gpd.read_file("data/fylker.geojson")
+st.set_page_config(page_title="Norway Counties Map (Pydeck)", page_icon="🗺️")
+st.set_page_config(page_title="Data Science Portfolio", layout="wide")
 
-# 2. Convert all non-serializable columns to string
-for col in norway_gdf.columns:
-    if str(norway_gdf[col].dtype).startswith("datetime"):
-        norway_gdf[col] = norway_gdf[col].astype(str)
+# --- Load your GeoJSON file ---
+gdf = gpd.read_file("data/fylker.geojson")
 
-# 3. Get the centroid for the initial map focus (this works for MultiPolygons too)
-centroid = norway_gdf.geometry.centroid.iloc[0]
-lat, lon = centroid.y, centroid.x
+# Ensure CRS is WGS84 (lat/lon)
+if gdf.crs and gdf.crs.to_string() != "EPSG:4326":
+    gdf = gdf.to_crs(epsg=4326)
 
-# 4. Create the Folium map
-m = folium.Map(location=[lat, lon], zoom_start=5)
+# --- Convert the GeoDataFrame into a pydeck-friendly dataframe ---
+def extract_coordinates(geometry):
+    # Handles both Polygon and MultiPolygon
+    if geometry.geom_type == "Polygon":
+        return [list(geometry.exterior.coords)]
+    elif geometry.geom_type == "MultiPolygon":
+        return [list(poly.exterior.coords) for poly in geometry.geoms]
+    else:
+        return []
 
-# 5. Add the MultiPolygon GeoDataFrame as a GeoJson layer
-folium.GeoJson(
-    norway_gdf,
-    name="Norway",
-    style_function=lambda feature: {
-        'fillColor': '#2274A5',
-        'color': '#144A55',
-        'weight': 2,
-        'fillOpacity': 0.35,
-    }
-).add_to(m)
+gdf["coordinates"] = gdf.geometry.apply(extract_coordinates)
 
-# 6. Display the map in Streamlit
-st.title("Norway MultiPolygon Map (Folium + Streamlit)")
-st_folium(m, width=700, height=500)
+# --- Build the Pydeck Layer ---
+polygon_layer = pdk.Layer(
+    "PolygonLayer",
+    data=gdf,
+    get_polygon="coordinates",
+    get_fill_color="[34, 116, 165, 100]",  # blue with alpha
+    get_line_color="[20, 74, 85, 255]",    # dark teal outline
+    pickable=True,
+    stroked=True,
+    filled=True,
+    extruded=False,
+    wireframe=True,
+    auto_highlight=True,
+)
+
+# --- Set the initial view state to center on Norway ---
+center = gdf.geometry.centroid.unary_union
+view_state = pdk.ViewState(
+    latitude=center.y, longitude=center.x,
+    zoom=4.5, pitch=0
+)
+
+# --- Show in Streamlit ---
+st.title("Norwegian Counties (Fylker) Map — Pydeck")
+st.pydeck_chart(
+    pdk.Deck(
+        layers=[polygon_layer],
+        initial_view_state=view_state,
+        tooltip={"text": "{NAVN}"}
+    )
+)

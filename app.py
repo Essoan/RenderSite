@@ -1,6 +1,8 @@
 import streamlit as st
 
 st.set_page_config(page_title="Data Science Portfolio", layout="wide")
+st.set_page_config(page_title="Norwegian Counties Map", page_icon="🗺️")
+
 
 # Apply global style
 with open("styles.css") as f:
