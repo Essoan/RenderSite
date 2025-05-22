@@ -12,22 +12,20 @@ st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
 # About section
 st.badge("### About Me")
-st.badge("""
-I am passionate about **data-driven solutions** and modern software development.  
-With a strong background in **data science, analytics, and programming**, I build tools and visualizations that make 
-complex problems simple.
-
-- 💡 **Skills:** Python, Pandas, scikit-learn, Streamlit, Data Visualization, SQL  
-- 🛠️ **Technologies:** Jupyter, Git, REST APIs  
-- 🗂️ **Interests:** Machine Learning, Automation, Dashboards, Open Source
-""")
+st.badge("I am passionate about **data-driven solutions** and modern software development. With a strong background in "
+         "**data science, analytics, and programming**, I build tools and visualizations that make complex problems "
+         "simple."
+         
+         "- 💡 **Skills:** Python, Pandas, scikit-learn, Streamlit, Data Visualization, SQL "
+         "- 🛠️ **Technologies:** Jupyter, Git, REST APIs "
+         "- 🗂️ **Interests:** Machine Learning, Automation, Dashboards, Open Source")
 
 # Projects preview (replace/add as you go)
 st.markdown("---")
 st.markdown("### Featured Projects")
 col1, col2 = st.columns(2)
 with col1:
-    st.html("**Project 1:** Exploratory Data Analysis App *(Coming Soon)*")
+    st.html("<b>Project 1:</b> Exploratory Data Analysis App <i>(Coming Soon)</i>")
     st.html("Interactive dashboard for rapid EDA on CSV datasets.")
 with col2:
     st.markdown("**Project 2:** ML Model Playground *(Coming Soon)*")
