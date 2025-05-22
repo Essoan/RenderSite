@@ -52,10 +52,11 @@ view_state = pdk.ViewState(
 )
 
 # --- Show in Streamlit ---
-st.title("Norwegian Counties (Fylker) Map — Pydeck")
+st.title("Norwegian Counties Map - Map from Pydeck")
 st.pydeck_chart(
     pdk.Deck(
         layers=[polygon_layer],
+        map_style="mapbox://styles/mapbox/outdoors-v12",
         initial_view_state=view_state,
         tooltip={"text": "{fylkesnavn}"}
     )
