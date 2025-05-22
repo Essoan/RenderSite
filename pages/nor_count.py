@@ -57,6 +57,6 @@ st.pydeck_chart(
     pdk.Deck(
         layers=[polygon_layer],
         initial_view_state=view_state,
-        tooltip={"text": "{NAVN}"}
+        tooltip={"text": "{fylkesnavn}"}
     )
 )
