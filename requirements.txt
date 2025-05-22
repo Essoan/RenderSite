@@ -3,3 +3,6 @@ streamlit-extras
 pandas
 numpy
 matplotlib
+folium
+streamlit-folium
+geopandas
