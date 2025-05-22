@@ -62,5 +62,4 @@ st.pydeck_chart(
         width=900,
         height=900
     )
-
 )
