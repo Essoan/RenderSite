@@ -6,7 +6,7 @@ import pandas as pd
 st.set_page_config(page_title="Norway Counties Map (Pydeck)", page_icon="🗺️", layout="wide")
 
 # --- Load your GeoJSON file ---
-gdf = gpd.read_file("data/fylker.geojson")
+gdf = gpd.read_file("../data/fylker.geojson")
 
 # Ensure CRS is WGS84 (lat/lon)
 if gdf.crs and gdf.crs.to_string() != "EPSG:4326":
