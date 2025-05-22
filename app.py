@@ -12,13 +12,13 @@ st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
 # About section
 st.html("<h1> About Me</h1>")
-st.html("I am passionate about <b>data-driven solutions</b> and modern software development. With a strong background "
-        "in <b>data science, analytics, and programming</b>, I build tools and visualizations that make complex "
-        "problems simple."
+st.html("I am passionate about <b>data-driven solutions</b> and modern software development. <br/>With a strong "
+        "background in <b>data science, analytics, and programming</b>, I build tools and visualizations that make "
+        "complex problems simple."
         "<br/>"
         "- 💡 <b>Skills:</b> Python, Pandas, scikit-learn, Streamlit, Data Visualization, SQL "
-        "- 🛠️ <b>Technologies:</b> Jupyter, Git, REST APIs "
-        "- 🗂️ </b>Interests:</b> Machine Learning, Automation, Dashboards, Open Source")
+        "<br/>- 🛠️ <b>Technologies:</b> Jupyter, Git, REST APIs "
+        "<br/>- 🗂️ </b>Interests:</b> Machine Learning, Automation, Dashboards, Open Source")
 
 # Projects preview (replace/add as you go)
 st.markdown("---")
