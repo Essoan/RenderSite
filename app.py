@@ -11,8 +11,8 @@ with open("styles.css") as f:
 st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
 # About section
-st.markdown("### About Me")
-st.markdown("""
+st.text_area("### About Me")
+st.text("""
 I am passionate about **data-driven solutions** and modern software development.  
 With a strong background in **data science, analytics, and programming**, I build tools and visualizations that make 
 complex problems simple.
