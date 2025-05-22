@@ -58,6 +58,9 @@ st.pydeck_chart(
         layers=[polygon_layer],
         map_style="mapbox://styles/mapbox/outdoors-v12",
         initial_view_state=view_state,
-        tooltip={"text": "{fylkesnavn}"}
+        tooltip={"text": "{fylkesnavn}"},
+        width=900,
+        height=900
     )
+
 )
